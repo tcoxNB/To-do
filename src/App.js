@@ -1,21 +1,41 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+} from 'react-router-dom';
+import Todo from './components/Todo/Todo'
+import About from './components/About'
+import ContactUs from './components/ContactUs'
+import Parts from './components/Parts/Parts'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+
+const App = () => (
+    <Router>
+        <div className='container'>
+            <nav className='navbar'>
+                <div className='navbar-menu'>
+                    <div className='navbar-item is-tab'>
+                        <Link to="/">Todo</Link>
+                    </div>
+                    <div className='navbar-item is-tab'>
+                        <Link to="/about">About</Link>
+                    </div>
+                    <div className='navbar-item is-tab'>
+                        <Link to="/contact-us">Contact Us</Link>
+                    </div>
+                    <div className='navbar-item is-tab'>
+                        <Link to="/parts">Parts</Link>
+                    </div>
+                </div>
+            </nav>
+            <hr />
+            <Route exact path="/" component={Todo} />
+            <Route path="/about" component={About} />
+            <Route path="/contact-us" component={ContactUs} />
+            <Route path="/parts" component={Parts} />
+        </div>
+    </Router>
+);
 
 export default App;
